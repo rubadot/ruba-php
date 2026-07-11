@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class SubscriptionBillingPeriodUpdatedMetadata
+{
+    /**
+     *
+     * @var string $subscriptionId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_id')]
+    public string $subscriptionId;
+
+    /**
+     *
+     * @var string $oldPeriodEnd
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('old_period_end')]
+    public string $oldPeriodEnd;
+
+    /**
+     *
+     * @var string $newPeriodEnd
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('new_period_end')]
+    public string $newPeriodEnd;
+
+    /**
+     * @param  string  $subscriptionId
+     * @param  string  $oldPeriodEnd
+     * @param  string  $newPeriodEnd
+     * @phpstan-pure
+     */
+    public function __construct(string $subscriptionId, string $oldPeriodEnd, string $newPeriodEnd)
+    {
+        $this->subscriptionId = $subscriptionId;
+        $this->oldPeriodEnd = $oldPeriodEnd;
+        $this->newPeriodEnd = $newPeriodEnd;
+    }
+}

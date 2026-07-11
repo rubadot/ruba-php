@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class CostMetadataOutput
+{
+    /**
+     * The amount in cents.
+     *
+     * @var string $amount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    public string $amount;
+
+    /**
+     * The currency. Currently, only `usd` is supported.
+     *
+     * @var string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    public string $currency;
+
+    /**
+     * @param  string  $amount
+     * @param  string  $currency
+     * @phpstan-pure
+     */
+    public function __construct(string $amount, string $currency)
+    {
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
+}

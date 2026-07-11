@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class Pagination
+{
+    /**
+     *
+     * @var int $totalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('total_count')]
+    public int $totalCount;
+
+    /**
+     *
+     * @var int $maxPage
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('max_page')]
+    public int $maxPage;
+
+    /**
+     * @param  int  $totalCount
+     * @param  int  $maxPage
+     * @phpstan-pure
+     */
+    public function __construct(int $totalCount, int $maxPage)
+    {
+        $this->totalCount = $totalCount;
+        $this->maxPage = $maxPage;
+    }
+}

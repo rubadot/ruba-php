@@ -1,0 +1,52 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Operations;
+
+use Ruba\Models\Components;
+class CustomFieldsCreateResponse
+{
+    /**
+     * HTTP response content type for this operation
+     *
+     * @var string $contentType
+     */
+    public string $contentType;
+
+    /**
+     * HTTP response status code for this operation
+     *
+     * @var int $statusCode
+     */
+    public int $statusCode;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     *
+     * @var \Psr\Http\Message\ResponseInterface $rawResponse
+     */
+    public \Psr\Http\Message\ResponseInterface $rawResponse;
+
+    /**
+     * Custom field created.
+     *
+     * @var \Ruba\Models\Components\CustomFieldText|\Ruba\Models\Components\CustomFieldNumber|\Ruba\Models\Components\CustomFieldDate|\Ruba\Models\Components\CustomFieldCheckbox|\Ruba\Models\Components\CustomFieldSelect|null $customField
+     */
+    public Components\CustomFieldText|Components\CustomFieldNumber|Components\CustomFieldDate|Components\CustomFieldCheckbox|Components\CustomFieldSelect|null $customField = null;
+
+    /**
+     * @param  string  $contentType
+     * @param  int  $statusCode
+     * @param  \Psr\Http\Message\ResponseInterface  $rawResponse
+     * @param  \Ruba\Models\Components\CustomFieldText|\Ruba\Models\Components\CustomFieldNumber|\Ruba\Models\Components\CustomFieldDate|\Ruba\Models\Components\CustomFieldCheckbox|\Ruba\Models\Components\CustomFieldSelect|null  $customField
+     * @phpstan-pure
+     */
+    public function __construct(string $contentType, int $statusCode, \Psr\Http\Message\ResponseInterface $rawResponse, Components\CustomFieldText|Components\CustomFieldNumber|Components\CustomFieldDate|Components\CustomFieldCheckbox|Components\CustomFieldSelect|null $customField = null)
+    {
+        $this->contentType = $contentType;
+        $this->statusCode = $statusCode;
+        $this->rawResponse = $rawResponse;
+        $this->customField = $customField;
+    }
+}

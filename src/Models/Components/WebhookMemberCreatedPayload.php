@@ -1,0 +1,56 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/**
+ * WebhookMemberCreatedPayload - Sent when a new member is created.
+ *
+ *
+ * A member represents an individual within a customer (team).
+ * This event is triggered when a member is added to a customer,
+ * either programmatically via the API or when an owner is automatically
+ * created for a new customer.
+ *
+ * **Discord & Slack support:** Basic
+ */
+class WebhookMemberCreatedPayload
+{
+    /**
+     *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
+     * A member of a customer.
+     *
+     * @var \Ruba\Models\Components\Member $data
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\Member')]
+    public Member $data;
+
+    /**
+     *
+     * @var string $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    public string $type;
+
+    /**
+     * @param  string  $type
+     * @param  \DateTime  $timestamp
+     * @param  \Ruba\Models\Components\Member  $data
+     * @phpstan-pure
+     */
+    public function __construct(\DateTime $timestamp, Member $data, string $type = 'member.created')
+    {
+        $this->timestamp = $timestamp;
+        $this->data = $data;
+        $this->type = $type;
+    }
+}

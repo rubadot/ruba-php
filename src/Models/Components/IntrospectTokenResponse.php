@@ -1,0 +1,108 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class IntrospectTokenResponse
+{
+    /**
+     *
+     * @var bool $active
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('active')]
+    public bool $active;
+
+    /**
+     *
+     * @var string $clientId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('client_id')]
+    public string $clientId;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\TokenType $tokenType
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('token_type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\TokenType')]
+    public TokenType $tokenType;
+
+    /**
+     *
+     * @var string $scope
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('scope')]
+    public string $scope;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\SubType $subType
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sub_type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\SubType')]
+    public SubType $subType;
+
+    /**
+     *
+     * @var string $sub
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sub')]
+    public string $sub;
+
+    /**
+     *
+     * @var string $aud
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('aud')]
+    public string $aud;
+
+    /**
+     *
+     * @var string $iss
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('iss')]
+    public string $iss;
+
+    /**
+     *
+     * @var int $exp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('exp')]
+    public int $exp;
+
+    /**
+     *
+     * @var int $iat
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('iat')]
+    public int $iat;
+
+    /**
+     * @param  bool  $active
+     * @param  string  $clientId
+     * @param  \Ruba\Models\Components\TokenType  $tokenType
+     * @param  string  $scope
+     * @param  \Ruba\Models\Components\SubType  $subType
+     * @param  string  $sub
+     * @param  string  $aud
+     * @param  string  $iss
+     * @param  int  $exp
+     * @param  int  $iat
+     * @phpstan-pure
+     */
+    public function __construct(bool $active, string $clientId, TokenType $tokenType, string $scope, SubType $subType, string $sub, string $aud, string $iss, int $exp, int $iat)
+    {
+        $this->active = $active;
+        $this->clientId = $clientId;
+        $this->tokenType = $tokenType;
+        $this->scope = $scope;
+        $this->subType = $subType;
+        $this->sub = $sub;
+        $this->aud = $aud;
+        $this->iss = $iss;
+        $this->exp = $exp;
+        $this->iat = $iat;
+    }
+}

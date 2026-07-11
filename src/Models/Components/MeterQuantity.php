@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class MeterQuantity
+{
+    /**
+     * The timestamp for the current period.
+     *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
+     * The quantity for the current period.
+     *
+     * @var float $quantity
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('quantity')]
+    public float $quantity;
+
+    /**
+     * @param  \DateTime  $timestamp
+     * @param  float  $quantity
+     * @phpstan-pure
+     */
+    public function __construct(\DateTime $timestamp, float $quantity)
+    {
+        $this->timestamp = $timestamp;
+        $this->quantity = $quantity;
+    }
+}

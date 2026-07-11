@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Operations;
+
+use Ruba\Utils\SpeakeasyMetadata;
+class OrdersExportRequest
+{
+    /**
+     * Filter by organization ID.
+     *
+     * @var string|array<string>|null $organizationId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=organization_id')]
+    public string|array|null $organizationId = null;
+
+    /**
+     * Filter by product ID.
+     *
+     * @var string|array<string>|null $productId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=product_id')]
+    public string|array|null $productId = null;
+
+    /**
+     * @param  string|array<string>|null  $organizationId
+     * @param  string|array<string>|null  $productId
+     * @phpstan-pure
+     */
+    public function __construct(string|array|null $organizationId = null, string|array|null $productId = null)
+    {
+        $this->organizationId = $organizationId;
+        $this->productId = $productId;
+    }
+}

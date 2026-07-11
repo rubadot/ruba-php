@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class BenefitLicenseKeyActivationCreateProperties
+{
+    /**
+     *
+     * @var int $limit
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('limit')]
+    public int $limit;
+
+    /**
+     *
+     * @var bool $enableCustomerAdmin
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('enable_customer_admin')]
+    public bool $enableCustomerAdmin;
+
+    /**
+     * @param  int  $limit
+     * @param  bool  $enableCustomerAdmin
+     * @phpstan-pure
+     */
+    public function __construct(int $limit, bool $enableCustomerAdmin)
+    {
+        $this->limit = $limit;
+        $this->enableCustomerAdmin = $enableCustomerAdmin;
+    }
+}

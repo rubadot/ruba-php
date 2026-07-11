@@ -1,0 +1,40 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/** MetricDashboardUpdate - Schema for updating a metrics dashboard. */
+class MetricDashboardUpdate
+{
+    /**
+     * Display name for the dashboard.
+     *
+     * @var ?string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $name = null;
+
+    /**
+     * List of metric slugs to display in this dashboard.
+     *
+     * @var ?array<string> $metrics
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metrics')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $metrics = null;
+
+    /**
+     * @param  ?string  $name
+     * @param  ?array<string>  $metrics
+     * @phpstan-pure
+     */
+    public function __construct(?string $name = null, ?array $metrics = null)
+    {
+        $this->name = $name;
+        $this->metrics = $metrics;
+    }
+}

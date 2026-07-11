@@ -1,0 +1,49 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/** CustomerPortalMemberCreate - Schema for adding a new member to the customer's team. */
+class CustomerPortalMemberCreate
+{
+    /**
+     * The email address of the new member.
+     *
+     * @var string $email
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
+    public string $email;
+
+    /**
+     *
+     * @var ?\Ruba\Models\Components\MemberRole $role
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('role')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\MemberRole|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?MemberRole $role = null;
+
+    /**
+     * The name of the new member (optional).
+     *
+     * @var ?string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $name = null;
+
+    /**
+     * @param  string  $email
+     * @param  ?\Ruba\Models\Components\MemberRole  $role
+     * @param  ?string  $name
+     * @phpstan-pure
+     */
+    public function __construct(string $email, ?MemberRole $role = null, ?string $name = null)
+    {
+        $this->email = $email;
+        $this->role = $role;
+        $this->name = $name;
+    }
+}

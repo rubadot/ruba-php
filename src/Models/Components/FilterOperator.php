@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+enum FilterOperator: string
+{
+    case Eq = 'eq';
+    case Ne = 'ne';
+    case Gt = 'gt';
+    case Gte = 'gte';
+    case Lt = 'lt';
+    case Lte = 'lte';
+    case Like = 'like';
+    case NotLike = 'not_like';
+}

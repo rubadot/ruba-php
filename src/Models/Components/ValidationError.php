@@ -1,0 +1,67 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class ValidationError
+{
+    /**
+     * $loc
+     *
+     * @var array<string|int> $loc
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('loc')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string|int>')]
+    public array $loc;
+
+    /**
+     *
+     * @var string $msg
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('msg')]
+    public string $msg;
+
+    /**
+     *
+     * @var string $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    public string $type;
+
+    /**
+     *
+     * @var mixed $input
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('input')]
+    #[\Speakeasy\Serializer\Annotation\Type('mixed')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public mixed $input = null;
+
+    /**
+     *
+     * @var ?\Ruba\Models\Components\Context $ctx
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('ctx')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\Context|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?Context $ctx = null;
+
+    /**
+     * @param  array<string|int>  $loc
+     * @param  string  $msg
+     * @param  string  $type
+     * @param  mixed  $input
+     * @param  ?\Ruba\Models\Components\Context  $ctx
+     * @phpstan-pure
+     */
+    public function __construct(array $loc, string $msg, string $type, mixed $input = null, ?Context $ctx = null)
+    {
+        $this->loc = $loc;
+        $this->msg = $msg;
+        $this->type = $type;
+        $this->input = $input;
+        $this->ctx = $ctx;
+    }
+}

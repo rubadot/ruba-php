@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Operations;
+
+use Ruba\Utils\SpeakeasyMetadata;
+class CustomerPortalDownloadablesListSecurity
+{
+    /**
+     *
+     * @var ?string $customerSession
+     */
+    #[SpeakeasyMetadata('security:scheme=true,type=http,subtype=bearer,name=Authorization')]
+    public ?string $customerSession = null;
+
+    /**
+     *
+     * @var ?string $memberSession
+     */
+    #[SpeakeasyMetadata('security:scheme=true,type=http,subtype=bearer,name=Authorization')]
+    public ?string $memberSession = null;
+
+    /**
+     * @param  ?string  $customerSession
+     * @param  ?string  $memberSession
+     * @phpstan-pure
+     */
+    public function __construct(?string $customerSession = null, ?string $memberSession = null)
+    {
+        $this->customerSession = $customerSession;
+        $this->memberSession = $memberSession;
+    }
+}

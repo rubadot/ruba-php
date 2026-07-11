@@ -1,0 +1,55 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class UserInfoUser
+{
+    /**
+     *
+     * @var string $sub
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('sub')]
+    public string $sub;
+
+    /**
+     *
+     * @var ?string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $name = null;
+
+    /**
+     *
+     * @var ?string $email
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $email = null;
+
+    /**
+     *
+     * @var ?bool $emailVerified
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email_verified')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $emailVerified = null;
+
+    /**
+     * @param  string  $sub
+     * @param  ?string  $name
+     * @param  ?string  $email
+     * @param  ?bool  $emailVerified
+     * @phpstan-pure
+     */
+    public function __construct(string $sub, ?string $name = null, ?string $email = null, ?bool $emailVerified = null)
+    {
+        $this->sub = $sub;
+        $this->name = $name;
+        $this->email = $email;
+        $this->emailVerified = $emailVerified;
+    }
+}

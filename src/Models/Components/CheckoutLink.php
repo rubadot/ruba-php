@@ -1,0 +1,199 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/** CheckoutLink - Checkout link data. */
+class CheckoutLink
+{
+    /**
+     * The ID of the object.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
+     * Creation timestamp of the object.
+     *
+     * @var \DateTime $createdAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    public \DateTime $createdAt;
+
+    /**
+     * $metadata
+     *
+     * @var array<string, string|int|float|bool> $metadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    public array $metadata;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\PaymentProcessor $paymentProcessor
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('payment_processor')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\PaymentProcessor')]
+    public PaymentProcessor $paymentProcessor;
+
+    /**
+     * Client secret used to access the checkout link.
+     *
+     * @var string $clientSecret
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('client_secret')]
+    public string $clientSecret;
+
+    /**
+     * Whether to allow the customer to apply discount codes. If you apply a discount through `discount_id`, it'll still be applied, but the customer won't be able to change it.
+     *
+     * @var bool $allowDiscountCodes
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_discount_codes')]
+    public bool $allowDiscountCodes;
+
+    /**
+     * Whether to require the customer to fill their full billing address, instead of just the country. Customers in the US will always be required to fill their full address, regardless of this setting.
+     *
+     * @var bool $requireBillingAddress
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('require_billing_address')]
+    public bool $requireBillingAddress;
+
+    /**
+     * The organization ID.
+     *
+     * @var string $organizationId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('organization_id')]
+    public string $organizationId;
+
+    /**
+     * $products
+     *
+     * @var array<\Ruba\Models\Components\CheckoutLinkProduct> $products
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('products')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Ruba\Models\Components\CheckoutLinkProduct>')]
+    public array $products;
+
+    /**
+     *
+     * @var string $url
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('url')]
+    public string $url;
+
+    /**
+     * Last modification timestamp of the object.
+     *
+     * @var ?\DateTime $modifiedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
+    public ?\DateTime $modifiedAt;
+
+    /**
+     * The interval unit for the trial period.
+     *
+     * @var ?\Ruba\Models\Components\TrialInterval $trialInterval
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\TrialInterval|null')]
+    public ?TrialInterval $trialInterval;
+
+    /**
+     * The number of interval units for the trial period.
+     *
+     * @var ?int $trialIntervalCount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('trial_interval_count')]
+    public ?int $trialIntervalCount;
+
+    /**
+     * URL where the customer will be redirected after a successful payment.
+     *
+     * @var ?string $successUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('success_url')]
+    public ?string $successUrl;
+
+    /**
+     * When set, a back button will be shown in the checkout to return to this URL.
+     *
+     * @var ?string $returnUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('return_url')]
+    public ?string $returnUrl;
+
+    /**
+     * Optional label to distinguish links internally
+     *
+     * @var ?string $label
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('label')]
+    public ?string $label;
+
+    /**
+     * ID of the discount to apply to the checkout. If the discount is not applicable anymore when opening the checkout link, it'll be ignored.
+     *
+     * @var ?string $discountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discount_id')]
+    public ?string $discountId;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\DiscountFixedOnceForeverDurationBase|\Ruba\Models\Components\DiscountFixedRepeatDurationBase|\Ruba\Models\Components\DiscountPercentageOnceForeverDurationBase|\Ruba\Models\Components\DiscountPercentageRepeatDurationBase|null $discount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discount')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\DiscountFixedOnceForeverDurationBase|\Ruba\Models\Components\DiscountFixedRepeatDurationBase|\Ruba\Models\Components\DiscountPercentageOnceForeverDurationBase|\Ruba\Models\Components\DiscountPercentageRepeatDurationBase|null')]
+    public DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount;
+
+    /**
+     * @param  string  $id
+     * @param  \DateTime  $createdAt
+     * @param  array<string, string|int|float|bool>  $metadata
+     * @param  \Ruba\Models\Components\PaymentProcessor  $paymentProcessor
+     * @param  string  $clientSecret
+     * @param  bool  $allowDiscountCodes
+     * @param  bool  $requireBillingAddress
+     * @param  string  $organizationId
+     * @param  array<\Ruba\Models\Components\CheckoutLinkProduct>  $products
+     * @param  string  $url
+     * @param  ?\DateTime  $modifiedAt
+     * @param  ?\Ruba\Models\Components\TrialInterval  $trialInterval
+     * @param  ?int  $trialIntervalCount
+     * @param  ?string  $successUrl
+     * @param  ?string  $returnUrl
+     * @param  ?string  $label
+     * @param  ?string  $discountId
+     * @param  \Ruba\Models\Components\DiscountFixedOnceForeverDurationBase|\Ruba\Models\Components\DiscountFixedRepeatDurationBase|\Ruba\Models\Components\DiscountPercentageOnceForeverDurationBase|\Ruba\Models\Components\DiscountPercentageRepeatDurationBase|null  $discount
+     * @phpstan-pure
+     */
+    public function __construct(string $id, \DateTime $createdAt, array $metadata, PaymentProcessor $paymentProcessor, string $clientSecret, bool $allowDiscountCodes, bool $requireBillingAddress, string $organizationId, array $products, string $url, ?\DateTime $modifiedAt = null, ?TrialInterval $trialInterval = null, ?int $trialIntervalCount = null, ?string $successUrl = null, ?string $returnUrl = null, ?string $label = null, ?string $discountId = null, DiscountFixedOnceForeverDurationBase|DiscountFixedRepeatDurationBase|DiscountPercentageOnceForeverDurationBase|DiscountPercentageRepeatDurationBase|null $discount = null)
+    {
+        $this->id = $id;
+        $this->createdAt = $createdAt;
+        $this->metadata = $metadata;
+        $this->paymentProcessor = $paymentProcessor;
+        $this->clientSecret = $clientSecret;
+        $this->allowDiscountCodes = $allowDiscountCodes;
+        $this->requireBillingAddress = $requireBillingAddress;
+        $this->organizationId = $organizationId;
+        $this->products = $products;
+        $this->url = $url;
+        $this->modifiedAt = $modifiedAt;
+        $this->trialInterval = $trialInterval;
+        $this->trialIntervalCount = $trialIntervalCount;
+        $this->successUrl = $successUrl;
+        $this->returnUrl = $returnUrl;
+        $this->label = $label;
+        $this->discountId = $discountId;
+        $this->discount = $discount;
+    }
+}

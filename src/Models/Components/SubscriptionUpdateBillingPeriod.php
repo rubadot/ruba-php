@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class SubscriptionUpdateBillingPeriod
+{
+    /**
+     * Set a new date for the end of the current billing period. The subscription will renew on this date. Needs to be later than the current value.
+     *
+     *
+     * It is not possible to update the current billing period on a canceled subscription.
+     *
+     * @var \DateTime $currentBillingPeriodEnd
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('current_billing_period_end')]
+    public \DateTime $currentBillingPeriodEnd;
+
+    /**
+     * @param  \DateTime  $currentBillingPeriodEnd
+     * @phpstan-pure
+     */
+    public function __construct(\DateTime $currentBillingPeriodEnd)
+    {
+        $this->currentBillingPeriodEnd = $currentBillingPeriodEnd;
+    }
+}

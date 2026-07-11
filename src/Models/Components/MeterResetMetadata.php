@@ -1,0 +1,25 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class MeterResetMetadata
+{
+    /**
+     *
+     * @var string $meterId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meter_id')]
+    public string $meterId;
+
+    /**
+     * @param  string  $meterId
+     * @phpstan-pure
+     */
+    public function __construct(string $meterId)
+    {
+        $this->meterId = $meterId;
+    }
+}

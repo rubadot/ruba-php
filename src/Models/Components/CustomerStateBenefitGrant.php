@@ -1,0 +1,98 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/** CustomerStateBenefitGrant - An active benefit grant for a customer. */
+class CustomerStateBenefitGrant
+{
+    /**
+     * The ID of the grant.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
+     * Creation timestamp of the object.
+     *
+     * @var \DateTime $createdAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    public \DateTime $createdAt;
+
+    /**
+     * The timestamp when the benefit was granted.
+     *
+     * @var \DateTime $grantedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('granted_at')]
+    public \DateTime $grantedAt;
+
+    /**
+     * The ID of the benefit concerned by this grant.
+     *
+     * @var string $benefitId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_id')]
+    public string $benefitId;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\BenefitType $benefitType
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\BenefitType')]
+    public BenefitType $benefitType;
+
+    /**
+     * $benefitMetadata
+     *
+     * @var array<string, string|int|float|bool> $benefitMetadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>')]
+    public array $benefitMetadata;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\BenefitGrantDiscordProperties|\Ruba\Models\Components\BenefitGrantGitHubRepositoryProperties|\Ruba\Models\Components\BenefitGrantDownloadablesProperties|\Ruba\Models\Components\BenefitGrantLicenseKeysProperties|\Ruba\Models\Components\BenefitGrantCustomProperties|\Ruba\Models\Components\BenefitGrantFeatureFlagProperties $properties
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('properties')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\BenefitGrantDiscordProperties|\Ruba\Models\Components\BenefitGrantGitHubRepositoryProperties|\Ruba\Models\Components\BenefitGrantDownloadablesProperties|\Ruba\Models\Components\BenefitGrantLicenseKeysProperties|\Ruba\Models\Components\BenefitGrantCustomProperties|\Ruba\Models\Components\BenefitGrantFeatureFlagProperties')]
+    public BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties;
+
+    /**
+     * Last modification timestamp of the object.
+     *
+     * @var ?\DateTime $modifiedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
+    public ?\DateTime $modifiedAt;
+
+    /**
+     * @param  string  $id
+     * @param  \DateTime  $createdAt
+     * @param  \DateTime  $grantedAt
+     * @param  string  $benefitId
+     * @param  \Ruba\Models\Components\BenefitType  $benefitType
+     * @param  array<string, string|int|float|bool>  $benefitMetadata
+     * @param  \Ruba\Models\Components\BenefitGrantDiscordProperties|\Ruba\Models\Components\BenefitGrantGitHubRepositoryProperties|\Ruba\Models\Components\BenefitGrantDownloadablesProperties|\Ruba\Models\Components\BenefitGrantLicenseKeysProperties|\Ruba\Models\Components\BenefitGrantCustomProperties|\Ruba\Models\Components\BenefitGrantFeatureFlagProperties  $properties
+     * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
+     */
+    public function __construct(string $id, \DateTime $createdAt, \DateTime $grantedAt, string $benefitId, BenefitType $benefitType, array $benefitMetadata, BenefitGrantDiscordProperties|BenefitGrantGitHubRepositoryProperties|BenefitGrantDownloadablesProperties|BenefitGrantLicenseKeysProperties|BenefitGrantCustomProperties|BenefitGrantFeatureFlagProperties $properties, ?\DateTime $modifiedAt = null)
+    {
+        $this->id = $id;
+        $this->createdAt = $createdAt;
+        $this->grantedAt = $grantedAt;
+        $this->benefitId = $benefitId;
+        $this->benefitType = $benefitType;
+        $this->benefitMetadata = $benefitMetadata;
+        $this->properties = $properties;
+        $this->modifiedAt = $modifiedAt;
+    }
+}

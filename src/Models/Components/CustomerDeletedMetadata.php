@@ -1,0 +1,52 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class CustomerDeletedMetadata
+{
+    /**
+     *
+     * @var string $customerId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_id')]
+    public string $customerId;
+
+    /**
+     *
+     * @var ?string $customerEmail
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email')]
+    public ?string $customerEmail;
+
+    /**
+     *
+     * @var ?string $customerName
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_name')]
+    public ?string $customerName;
+
+    /**
+     *
+     * @var ?string $customerExternalId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_external_id')]
+    public ?string $customerExternalId;
+
+    /**
+     * @param  string  $customerId
+     * @param  ?string  $customerEmail
+     * @param  ?string  $customerName
+     * @param  ?string  $customerExternalId
+     * @phpstan-pure
+     */
+    public function __construct(string $customerId, ?string $customerEmail = null, ?string $customerName = null, ?string $customerExternalId = null)
+    {
+        $this->customerId = $customerId;
+        $this->customerEmail = $customerEmail;
+        $this->customerName = $customerName;
+        $this->customerExternalId = $customerExternalId;
+    }
+}

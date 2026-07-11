@@ -1,0 +1,20 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+enum OrganizationSocialPlatforms: string
+{
+    case X = 'x';
+    case Github = 'github';
+    case Facebook = 'facebook';
+    case Instagram = 'instagram';
+    case Youtube = 'youtube';
+    case Tiktok = 'tiktok';
+    case Linkedin = 'linkedin';
+    case Threads = 'threads';
+    case Discord = 'discord';
+    case Other = 'other';
+}

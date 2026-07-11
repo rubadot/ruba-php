@@ -1,0 +1,72 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class TokenResponse
+{
+    /**
+     *
+     * @var string $accessToken
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('access_token')]
+    public string $accessToken;
+
+    /**
+     *
+     * @var int $expiresIn
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expires_in')]
+    public int $expiresIn;
+
+    /**
+     *
+     * @var string $scope
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('scope')]
+    public string $scope;
+
+    /**
+     *
+     * @var ?string $refreshToken
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refresh_token')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $refreshToken = null;
+
+    /**
+     *
+     * @var ?string $idToken
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id_token')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $idToken = null;
+
+    /**
+     *
+     * @var string $tokenType
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('token_type')]
+    public string $tokenType;
+
+    /**
+     * @param  string  $accessToken
+     * @param  string  $tokenType
+     * @param  int  $expiresIn
+     * @param  string  $scope
+     * @param  ?string  $refreshToken
+     * @param  ?string  $idToken
+     * @phpstan-pure
+     */
+    public function __construct(string $accessToken, int $expiresIn, string $scope, ?string $refreshToken = null, ?string $idToken = null, string $tokenType = 'Bearer')
+    {
+        $this->accessToken = $accessToken;
+        $this->expiresIn = $expiresIn;
+        $this->scope = $scope;
+        $this->refreshToken = $refreshToken;
+        $this->idToken = $idToken;
+        $this->tokenType = $tokenType;
+    }
+}

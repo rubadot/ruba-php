@@ -1,0 +1,45 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class S3FileUploadMultipart
+{
+    /**
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
+     *
+     * @var string $path
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('path')]
+    public string $path;
+
+    /**
+     * $parts
+     *
+     * @var array<\Ruba\Models\Components\S3FileUploadPart> $parts
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('parts')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Ruba\Models\Components\S3FileUploadPart>')]
+    public array $parts;
+
+    /**
+     * @param  string  $id
+     * @param  string  $path
+     * @param  array<\Ruba\Models\Components\S3FileUploadPart>  $parts
+     * @phpstan-pure
+     */
+    public function __construct(string $id, string $path, array $parts)
+    {
+        $this->id = $id;
+        $this->path = $path;
+        $this->parts = $parts;
+    }
+}

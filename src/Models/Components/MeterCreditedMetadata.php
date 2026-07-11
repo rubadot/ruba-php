@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class MeterCreditedMetadata
+{
+    /**
+     *
+     * @var string $meterId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meter_id')]
+    public string $meterId;
+
+    /**
+     *
+     * @var int $units
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('units')]
+    public int $units;
+
+    /**
+     *
+     * @var bool $rollover
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('rollover')]
+    public bool $rollover;
+
+    /**
+     * @param  string  $meterId
+     * @param  int  $units
+     * @param  bool  $rollover
+     * @phpstan-pure
+     */
+    public function __construct(string $meterId, int $units, bool $rollover)
+    {
+        $this->meterId = $meterId;
+        $this->units = $units;
+        $this->rollover = $rollover;
+    }
+}

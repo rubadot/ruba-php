@@ -1,0 +1,54 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class BenefitGrantMetadata
+{
+    /**
+     *
+     * @var string $benefitId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_id')]
+    public string $benefitId;
+
+    /**
+     *
+     * @var string $benefitGrantId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_grant_id')]
+    public string $benefitGrantId;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\BenefitType $benefitType
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('benefit_type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\BenefitType')]
+    public BenefitType $benefitType;
+
+    /**
+     *
+     * @var ?string $memberId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $memberId = null;
+
+    /**
+     * @param  string  $benefitId
+     * @param  string  $benefitGrantId
+     * @param  \Ruba\Models\Components\BenefitType  $benefitType
+     * @param  ?string  $memberId
+     * @phpstan-pure
+     */
+    public function __construct(string $benefitId, string $benefitGrantId, BenefitType $benefitType, ?string $memberId = null)
+    {
+        $this->benefitId = $benefitId;
+        $this->benefitGrantId = $benefitGrantId;
+        $this->benefitType = $benefitType;
+        $this->memberId = $memberId;
+    }
+}

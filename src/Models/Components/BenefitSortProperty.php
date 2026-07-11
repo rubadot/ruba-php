@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+enum BenefitSortProperty: string
+{
+    case CreatedAt = 'created_at';
+    case MinusCreatedAt = '-created_at';
+    case Description = 'description';
+    case MinusDescription = '-description';
+    case Type = 'type';
+    case MinusType = '-type';
+    case UserOrder = 'user_order';
+    case MinusUserOrder = '-user_order';
+}

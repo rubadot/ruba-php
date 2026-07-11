@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class OrderVoidedMetadata
+{
+    /**
+     *
+     * @var string $orderId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('order_id')]
+    public string $orderId;
+
+    /**
+     *
+     * @var int $amount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('amount')]
+    public int $amount;
+
+    /**
+     *
+     * @var string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    public string $currency;
+
+    /**
+     * @param  string  $orderId
+     * @param  int  $amount
+     * @param  string  $currency
+     * @phpstan-pure
+     */
+    public function __construct(string $orderId, int $amount, string $currency)
+    {
+        $this->orderId = $orderId;
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
+}

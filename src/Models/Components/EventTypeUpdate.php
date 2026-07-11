@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class EventTypeUpdate
+{
+    /**
+     * The label for the event type.
+     *
+     * @var string $label
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('label')]
+    public string $label;
+
+    /**
+     * Property path to extract dynamic label from event metadata (e.g., 'subject' or 'metadata.subject').
+     *
+     * @var ?string $labelPropertySelector
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('label_property_selector')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $labelPropertySelector = null;
+
+    /**
+     * @param  string  $label
+     * @param  ?string  $labelPropertySelector
+     * @phpstan-pure
+     */
+    public function __construct(string $label, ?string $labelPropertySelector = null)
+    {
+        $this->label = $label;
+        $this->labelPropertySelector = $labelPropertySelector;
+    }
+}

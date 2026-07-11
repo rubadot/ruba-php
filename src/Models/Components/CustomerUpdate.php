@@ -1,0 +1,114 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class CustomerUpdate
+{
+    /**
+     * Key-value object allowing you to store additional information.
+     *
+     *
+     * The key must be a string with a maximum length of **40 characters**.
+     * The value must be either:
+     *
+     * * A string with a maximum length of **500 characters**
+     * * An integer
+     * * A floating-point number
+     * * A boolean
+     *
+     * You can store up to **50 key-value pairs**.
+     *
+     * @var ?array<string, string|int|float|bool> $metadata
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('metadata')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<string, string|int|float|bool>|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?array $metadata = null;
+
+    /**
+     * The email address of the customer. This must be unique within the organization.
+     *
+     * @var ?string $email
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $email = null;
+
+    /**
+     *
+     * @var ?string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $name = null;
+
+    /**
+     *
+     * @var ?\Ruba\Models\Components\AddressInput $billingAddress
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('billing_address')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\AddressInput|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?AddressInput $billingAddress = null;
+
+    /**
+     *
+     * @var ?string $taxId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('tax_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $taxId = null;
+
+    /**
+     *
+     * @var ?string $locale
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('locale')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $locale = null;
+
+    /**
+     * The ID of the customer in your system. This must be unique within the organization. Once set, it can't be updated.
+     *
+     * @var ?string $externalId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalId = null;
+
+    /**
+     * The customer type. Can only be upgraded from 'individual' to 'team', never downgraded.
+     *
+     * @var ?\Ruba\Models\Components\CustomerType $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\CustomerType|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?CustomerType $type = null;
+
+    /**
+     * @param  ?array<string, string|int|float|bool>  $metadata
+     * @param  ?string  $email
+     * @param  ?string  $name
+     * @param  ?\Ruba\Models\Components\AddressInput  $billingAddress
+     * @param  ?string  $taxId
+     * @param  ?string  $locale
+     * @param  ?string  $externalId
+     * @param  ?\Ruba\Models\Components\CustomerType  $type
+     * @phpstan-pure
+     */
+    public function __construct(?array $metadata = null, ?string $email = null, ?string $name = null, ?AddressInput $billingAddress = null, ?string $taxId = null, ?string $locale = null, ?string $externalId = null, ?CustomerType $type = null)
+    {
+        $this->metadata = $metadata;
+        $this->email = $email;
+        $this->name = $name;
+        $this->billingAddress = $billingAddress;
+        $this->taxId = $taxId;
+        $this->locale = $locale;
+        $this->externalId = $externalId;
+        $this->type = $type;
+    }
+}

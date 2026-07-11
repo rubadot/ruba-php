@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Operations;
+
+use Ruba\Models\Components;
+use Ruba\Utils\SpeakeasyMetadata;
+class CheckoutsClientConfirmRequest
+{
+    /**
+     * The checkout session client secret.
+     *
+     * @var string $clientSecret
+     */
+    #[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=client_secret')]
+    public string $clientSecret;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\CheckoutConfirmStripe $checkoutConfirmStripe
+     */
+    #[SpeakeasyMetadata('request:mediaType=application/json')]
+    public Components\CheckoutConfirmStripe $checkoutConfirmStripe;
+
+    /**
+     * @param  string  $clientSecret
+     * @param  \Ruba\Models\Components\CheckoutConfirmStripe  $checkoutConfirmStripe
+     * @phpstan-pure
+     */
+    public function __construct(string $clientSecret, Components\CheckoutConfirmStripe $checkoutConfirmStripe)
+    {
+        $this->clientSecret = $clientSecret;
+        $this->checkoutConfirmStripe = $checkoutConfirmStripe;
+    }
+}

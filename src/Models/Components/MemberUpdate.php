@@ -1,0 +1,39 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/** MemberUpdate - Schema for updating a member. */
+class MemberUpdate
+{
+    /**
+     *
+     * @var ?string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $name = null;
+
+    /**
+     * The role of the member within the customer.
+     *
+     * @var ?\Ruba\Models\Components\MemberRole $role
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('role')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\MemberRole|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?MemberRole $role = null;
+
+    /**
+     * @param  ?string  $name
+     * @param  ?\Ruba\Models\Components\MemberRole  $role
+     * @phpstan-pure
+     */
+    public function __construct(?string $name = null, ?MemberRole $role = null)
+    {
+        $this->name = $name;
+        $this->role = $role;
+    }
+}

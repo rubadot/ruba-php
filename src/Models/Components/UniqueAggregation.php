@@ -1,0 +1,35 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class UniqueAggregation
+{
+    /**
+     *
+     * @var string $property
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('property')]
+    public string $property;
+
+    /**
+     *
+     * @var ?string $func
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('func')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $func = null;
+
+    /**
+     * @param  string  $property
+     * @param  ?string  $func
+     * @phpstan-pure
+     */
+    public function __construct(string $property, ?string $func = 'unique')
+    {
+        $this->property = $property;
+        $this->func = $func;
+    }
+}

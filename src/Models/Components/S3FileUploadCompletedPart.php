@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class S3FileUploadCompletedPart
+{
+    /**
+     *
+     * @var int $number
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('number')]
+    public int $number;
+
+    /**
+     *
+     * @var string $checksumEtag
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checksum_etag')]
+    public string $checksumEtag;
+
+    /**
+     *
+     * @var ?string $checksumSha256Base64
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('checksum_sha256_base64')]
+    public ?string $checksumSha256Base64;
+
+    /**
+     * @param  int  $number
+     * @param  string  $checksumEtag
+     * @param  ?string  $checksumSha256Base64
+     * @phpstan-pure
+     */
+    public function __construct(int $number, string $checksumEtag, ?string $checksumSha256Base64 = null)
+    {
+        $this->number = $number;
+        $this->checksumEtag = $checksumEtag;
+        $this->checksumSha256Base64 = $checksumSha256Base64;
+    }
+}

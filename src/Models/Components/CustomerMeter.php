@@ -1,0 +1,118 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/** CustomerMeter - An active customer meter, with current consumed and credited units. */
+class CustomerMeter
+{
+    /**
+     * The ID of the object.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
+     * Creation timestamp of the object.
+     *
+     * @var \DateTime $createdAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    public \DateTime $createdAt;
+
+    /**
+     * The ID of the customer.
+     *
+     * @var string $customerId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_id')]
+    public string $customerId;
+
+    /**
+     * The ID of the meter.
+     *
+     * @var string $meterId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meter_id')]
+    public string $meterId;
+
+    /**
+     * The number of consumed units.
+     *
+     * @var float $consumedUnits
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('consumed_units')]
+    public float $consumedUnits;
+
+    /**
+     * The number of credited units.
+     *
+     * @var int $creditedUnits
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('credited_units')]
+    public int $creditedUnits;
+
+    /**
+     * The balance of the meter, i.e. the difference between credited and consumed units.
+     *
+     * @var float $balance
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('balance')]
+    public float $balance;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\CustomerIndividual|\Ruba\Models\Components\CustomerTeam $customer
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\CustomerIndividual|\Ruba\Models\Components\CustomerTeam')]
+    #[\Speakeasy\Serializer\Annotation\UnionDiscriminator(field: 'type', map: ['individual' => '\Ruba\Models\Components\CustomerIndividual', 'team' => '\Ruba\Models\Components\CustomerTeam'])]
+    public CustomerIndividual|CustomerTeam $customer;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\Meter $meter
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('meter')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\Meter')]
+    public Meter $meter;
+
+    /**
+     * Last modification timestamp of the object.
+     *
+     * @var ?\DateTime $modifiedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
+    public ?\DateTime $modifiedAt;
+
+    /**
+     * @param  string  $id
+     * @param  \DateTime  $createdAt
+     * @param  string  $customerId
+     * @param  string  $meterId
+     * @param  float  $consumedUnits
+     * @param  int  $creditedUnits
+     * @param  float  $balance
+     * @param  \Ruba\Models\Components\CustomerIndividual|\Ruba\Models\Components\CustomerTeam  $customer
+     * @param  \Ruba\Models\Components\Meter  $meter
+     * @param  ?\DateTime  $modifiedAt
+     * @phpstan-pure
+     */
+    public function __construct(string $id, \DateTime $createdAt, string $customerId, string $meterId, float $consumedUnits, int $creditedUnits, float $balance, CustomerIndividual|CustomerTeam $customer, Meter $meter, ?\DateTime $modifiedAt = null)
+    {
+        $this->id = $id;
+        $this->createdAt = $createdAt;
+        $this->customerId = $customerId;
+        $this->meterId = $meterId;
+        $this->consumedUnits = $consumedUnits;
+        $this->creditedUnits = $creditedUnits;
+        $this->balance = $balance;
+        $this->customer = $customer;
+        $this->meter = $meter;
+        $this->modifiedAt = $modifiedAt;
+    }
+}

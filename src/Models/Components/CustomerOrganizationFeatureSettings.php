@@ -1,0 +1,28 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/** CustomerOrganizationFeatureSettings - Feature flags exposed to the customer portal. */
+class CustomerOrganizationFeatureSettings
+{
+    /**
+     * Whether the member model is enabled for this organization.
+     *
+     * @var ?bool $memberModelEnabled
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('member_model_enabled')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?bool $memberModelEnabled = null;
+
+    /**
+     * @param  ?bool  $memberModelEnabled
+     * @phpstan-pure
+     */
+    public function __construct(?bool $memberModelEnabled = false)
+    {
+        $this->memberModelEnabled = $memberModelEnabled;
+    }
+}

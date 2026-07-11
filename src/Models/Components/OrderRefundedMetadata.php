@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class OrderRefundedMetadata
+{
+    /**
+     *
+     * @var string $orderId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('order_id')]
+    public string $orderId;
+
+    /**
+     *
+     * @var int $refundedAmount
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('refunded_amount')]
+    public int $refundedAmount;
+
+    /**
+     *
+     * @var string $currency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('currency')]
+    public string $currency;
+
+    /**
+     * @param  string  $orderId
+     * @param  int  $refundedAmount
+     * @param  string  $currency
+     * @phpstan-pure
+     */
+    public function __construct(string $orderId, int $refundedAmount, string $currency)
+    {
+        $this->orderId = $orderId;
+        $this->refundedAmount = $refundedAmount;
+        $this->currency = $currency;
+    }
+}

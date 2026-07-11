@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+enum PaymentSortProperty: string
+{
+    case CreatedAt = 'created_at';
+    case MinusCreatedAt = '-created_at';
+    case Status = 'status';
+    case MinusStatus = '-status';
+    case Amount = 'amount';
+    case MinusAmount = '-amount';
+    case Method = 'method';
+    case MinusMethod = '-method';
+}

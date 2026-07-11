@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class CustomerPortalOAuthAccount
+{
+    /**
+     *
+     * @var string $accountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('account_id')]
+    public string $accountId;
+
+    /**
+     *
+     * @var ?string $accountUsername
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('account_username')]
+    public ?string $accountUsername;
+
+    /**
+     * @param  string  $accountId
+     * @param  ?string  $accountUsername
+     * @phpstan-pure
+     */
+    public function __construct(string $accountId, ?string $accountUsername = null)
+    {
+        $this->accountId = $accountId;
+        $this->accountUsername = $accountUsername;
+    }
+}

@@ -1,0 +1,230 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class Organization
+{
+    /**
+     * Creation timestamp of the object.
+     *
+     * @var \DateTime $createdAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('created_at')]
+    public \DateTime $createdAt;
+
+    /**
+     * The ID of the object.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
+     * Organization name shown in checkout, customer portal, emails etc.
+     *
+     * @var string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    public string $name;
+
+    /**
+     * Unique organization slug in checkout, customer portal and credit card statements.
+     *
+     * @var string $slug
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
+    public string $slug;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\SubscriptionProrationBehavior $prorationBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('proration_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\SubscriptionProrationBehavior')]
+    public SubscriptionProrationBehavior $prorationBehavior;
+
+    /**
+     * Whether customers can update their subscriptions from the customer portal.
+     *
+     * @var bool $allowCustomerUpdates
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('allow_customer_updates')]
+    public bool $allowCustomerUpdates;
+
+    /**
+     * Links to social profiles.
+     *
+     * @var array<\Ruba\Models\Components\OrganizationSocialLink> $socials
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('socials')]
+    #[\Speakeasy\Serializer\Annotation\Type('array<\Ruba\Models\Components\OrganizationSocialLink>')]
+    public array $socials;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\OrganizationStatus $status
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\OrganizationStatus')]
+    public OrganizationStatus $status;
+
+    /**
+     * Default presentment currency. Used as fallback in checkout and customer portal, if the customer's local currency is not available.
+     *
+     * @var string $defaultPresentmentCurrency
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_presentment_currency')]
+    public string $defaultPresentmentCurrency;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\TaxBehaviorOption $defaultTaxBehavior
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('default_tax_behavior')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\TaxBehaviorOption')]
+    public TaxBehaviorOption $defaultTaxBehavior;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\OrganizationSubscriptionSettings $subscriptionSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('subscription_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\OrganizationSubscriptionSettings')]
+    public OrganizationSubscriptionSettings $subscriptionSettings;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\OrganizationNotificationSettings $notificationSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('notification_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\OrganizationNotificationSettings')]
+    public OrganizationNotificationSettings $notificationSettings;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\OrganizationCustomerEmailSettings $customerEmailSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_email_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\OrganizationCustomerEmailSettings')]
+    public OrganizationCustomerEmailSettings $customerEmailSettings;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\OrganizationCustomerPortalSettings $customerPortalSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_portal_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\OrganizationCustomerPortalSettings')]
+    public OrganizationCustomerPortalSettings $customerPortalSettings;
+
+    /**
+     * Last modification timestamp of the object.
+     *
+     * @var ?\DateTime $modifiedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('modified_at')]
+    public ?\DateTime $modifiedAt;
+
+    /**
+     * Avatar URL shown in checkout, customer portal, emails etc.
+     *
+     * @var ?string $avatarUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('avatar_url')]
+    public ?string $avatarUrl;
+
+    /**
+     * Public support email.
+     *
+     * @var ?string $email
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
+    public ?string $email;
+
+    /**
+     * Official website of the organization.
+     *
+     * @var ?string $website
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('website')]
+    public ?string $website;
+
+    /**
+     * When the business details were submitted for review.
+     *
+     * @var ?\DateTime $detailsSubmittedAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('details_submitted_at')]
+    public ?\DateTime $detailsSubmittedAt;
+
+    /**
+     * Organization feature settings
+     *
+     * @var ?\Ruba\Models\Components\OrganizationFeatureSettings $featureSettings
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('feature_settings')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\OrganizationFeatureSettings|null')]
+    public ?OrganizationFeatureSettings $featureSettings;
+
+    /**
+     * Two-letter country code (ISO 3166-1 alpha-2).
+     *
+     * @var ?\Ruba\Models\Components\CountryAlpha2 $country
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('country')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\CountryAlpha2|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?CountryAlpha2 $country = null;
+
+    /**
+     * @param  \DateTime  $createdAt
+     * @param  string  $id
+     * @param  string  $name
+     * @param  string  $slug
+     * @param  \Ruba\Models\Components\SubscriptionProrationBehavior  $prorationBehavior
+     * @param  bool  $allowCustomerUpdates
+     * @param  array<\Ruba\Models\Components\OrganizationSocialLink>  $socials
+     * @param  \Ruba\Models\Components\OrganizationStatus  $status
+     * @param  string  $defaultPresentmentCurrency
+     * @param  \Ruba\Models\Components\TaxBehaviorOption  $defaultTaxBehavior
+     * @param  \Ruba\Models\Components\OrganizationSubscriptionSettings  $subscriptionSettings
+     * @param  \Ruba\Models\Components\OrganizationNotificationSettings  $notificationSettings
+     * @param  \Ruba\Models\Components\OrganizationCustomerEmailSettings  $customerEmailSettings
+     * @param  \Ruba\Models\Components\OrganizationCustomerPortalSettings  $customerPortalSettings
+     * @param  ?\DateTime  $modifiedAt
+     * @param  ?string  $avatarUrl
+     * @param  ?string  $email
+     * @param  ?string  $website
+     * @param  ?\DateTime  $detailsSubmittedAt
+     * @param  ?\Ruba\Models\Components\OrganizationFeatureSettings  $featureSettings
+     * @param  ?\Ruba\Models\Components\CountryAlpha2  $country
+     * @phpstan-pure
+     */
+    public function __construct(\DateTime $createdAt, string $id, string $name, string $slug, SubscriptionProrationBehavior $prorationBehavior, bool $allowCustomerUpdates, array $socials, OrganizationStatus $status, string $defaultPresentmentCurrency, TaxBehaviorOption $defaultTaxBehavior, OrganizationSubscriptionSettings $subscriptionSettings, OrganizationNotificationSettings $notificationSettings, OrganizationCustomerEmailSettings $customerEmailSettings, OrganizationCustomerPortalSettings $customerPortalSettings, ?\DateTime $modifiedAt = null, ?string $avatarUrl = null, ?string $email = null, ?string $website = null, ?\DateTime $detailsSubmittedAt = null, ?OrganizationFeatureSettings $featureSettings = null, ?CountryAlpha2 $country = null)
+    {
+        $this->createdAt = $createdAt;
+        $this->id = $id;
+        $this->name = $name;
+        $this->slug = $slug;
+        $this->prorationBehavior = $prorationBehavior;
+        $this->allowCustomerUpdates = $allowCustomerUpdates;
+        $this->socials = $socials;
+        $this->status = $status;
+        $this->defaultPresentmentCurrency = $defaultPresentmentCurrency;
+        $this->defaultTaxBehavior = $defaultTaxBehavior;
+        $this->subscriptionSettings = $subscriptionSettings;
+        $this->notificationSettings = $notificationSettings;
+        $this->customerEmailSettings = $customerEmailSettings;
+        $this->customerPortalSettings = $customerPortalSettings;
+        $this->modifiedAt = $modifiedAt;
+        $this->avatarUrl = $avatarUrl;
+        $this->email = $email;
+        $this->website = $website;
+        $this->detailsSubmittedAt = $detailsSubmittedAt;
+        $this->featureSettings = $featureSettings;
+        $this->country = $country;
+    }
+}

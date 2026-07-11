@@ -1,0 +1,24 @@
+# OrdersGenerateInvoiceResponse422OrdersGenerateInvoice
+
+Order is not paid or is missing billing name or address.
+
+
+## Supported Types
+
+### `Errors\MissingInvoiceBillingDetails`
+
+```php
+/**
+* @var \Ruba\Models\Errors\MissingInvoiceBillingDetails
+*/
+Errors\MissingInvoiceBillingDetails $value = /* values here */
+```
+
+### `Errors\NotPaidOrder`
+
+```php
+/**
+* @var \Ruba\Models\Errors\NotPaidOrder
+*/
+Errors\NotPaidOrder $value = /* values here */
+```

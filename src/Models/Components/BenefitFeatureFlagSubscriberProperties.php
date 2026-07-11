@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/** BenefitFeatureFlagSubscriberProperties - Properties available to subscribers for a benefit of type `feature_flag`. */
+class BenefitFeatureFlagSubscriberProperties
+{
+
+    public function __construct()
+    {
+    }
+}

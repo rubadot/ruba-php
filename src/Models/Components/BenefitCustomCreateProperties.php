@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/** BenefitCustomCreateProperties - Properties for creating a benefit of type `custom`. */
+class BenefitCustomCreateProperties
+{
+    /**
+     *
+     * @var ?string $note
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('note')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $note = null;
+
+    /**
+     * @param  ?string  $note
+     * @phpstan-pure
+     */
+    public function __construct(?string $note = null)
+    {
+        $this->note = $note;
+    }
+}

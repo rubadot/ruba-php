@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class FilePatch
+{
+    /**
+     *
+     * @var ?string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $name = null;
+
+    /**
+     *
+     * @var ?string $version
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('version')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $version = null;
+
+    /**
+     * @param  ?string  $name
+     * @param  ?string  $version
+     * @phpstan-pure
+     */
+    public function __construct(?string $name = null, ?string $version = null)
+    {
+        $this->name = $name;
+        $this->version = $version;
+    }
+}

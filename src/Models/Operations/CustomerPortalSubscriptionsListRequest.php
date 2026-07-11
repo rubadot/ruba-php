@@ -1,0 +1,77 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Operations;
+
+use Ruba\Models\Components;
+use Ruba\Utils\SpeakeasyMetadata;
+class CustomerPortalSubscriptionsListRequest
+{
+    /**
+     * Filter by product ID.
+     *
+     * @var string|array<string>|null $productId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=product_id')]
+    public string|array|null $productId = null;
+
+    /**
+     * Filter by active or cancelled subscription.
+     *
+     * @var ?bool $active
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=active')]
+    public ?bool $active = null;
+
+    /**
+     * Search by product or organization name.
+     *
+     * @var ?string $query
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=query')]
+    public ?string $query = null;
+
+    /**
+     * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
+     *
+     * @var ?array<\Ruba\Models\Components\CustomerSubscriptionSortProperty> $sorting
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
+    public ?array $sorting = null;
+
+    /**
+     * Page number, defaults to 1.
+     *
+     * @var ?int $page
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=page')]
+    public ?int $page = null;
+
+    /**
+     * Size of a page, defaults to 10. Maximum is 100.
+     *
+     * @var ?int $limit
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=limit')]
+    public ?int $limit = null;
+
+    /**
+     * @param  ?int  $page
+     * @param  ?int  $limit
+     * @param  string|array<string>|null  $productId
+     * @param  ?bool  $active
+     * @param  ?string  $query
+     * @param  ?array<\Ruba\Models\Components\CustomerSubscriptionSortProperty>  $sorting
+     * @phpstan-pure
+     */
+    public function __construct(string|array|null $productId = null, ?bool $active = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    {
+        $this->productId = $productId;
+        $this->active = $active;
+        $this->query = $query;
+        $this->sorting = $sorting;
+        $this->page = $page;
+        $this->limit = $limit;
+    }
+}

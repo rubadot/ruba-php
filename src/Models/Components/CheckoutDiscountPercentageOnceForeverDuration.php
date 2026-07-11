@@ -1,0 +1,75 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/** CheckoutDiscountPercentageOnceForeverDuration - Schema for a percentage discount that is applied once or forever. */
+class CheckoutDiscountPercentageOnceForeverDuration
+{
+    /**
+     *
+     * @var \Ruba\Models\Components\DiscountDuration $duration
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('duration')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\DiscountDuration')]
+    public DiscountDuration $duration;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\DiscountType $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\DiscountType')]
+    public DiscountType $type;
+
+    /**
+     * Discount percentage in basis points. A basis point is 1/100th of a percent. For example, 1000 basis points equals a 10% discount.
+     *
+     * @var int $basisPoints
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('basis_points')]
+    public int $basisPoints;
+
+    /**
+     * The ID of the object.
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
+     *
+     * @var string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    public string $name;
+
+    /**
+     *
+     * @var ?string $code
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('code')]
+    public ?string $code;
+
+    /**
+     * @param  \Ruba\Models\Components\DiscountDuration  $duration
+     * @param  \Ruba\Models\Components\DiscountType  $type
+     * @param  int  $basisPoints
+     * @param  string  $id
+     * @param  string  $name
+     * @param  ?string  $code
+     * @phpstan-pure
+     */
+    public function __construct(DiscountDuration $duration, DiscountType $type, int $basisPoints, string $id, string $name, ?string $code = null)
+    {
+        $this->duration = $duration;
+        $this->type = $type;
+        $this->basisPoints = $basisPoints;
+        $this->id = $id;
+        $this->name = $name;
+        $this->code = $code;
+    }
+}

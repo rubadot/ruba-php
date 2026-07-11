@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class AuthorizeOrganization
+{
+    /**
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
+     *
+     * @var string $slug
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('slug')]
+    public string $slug;
+
+    /**
+     *
+     * @var ?string $avatarUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('avatar_url')]
+    public ?string $avatarUrl;
+
+    /**
+     * @param  string  $id
+     * @param  string  $slug
+     * @param  ?string  $avatarUrl
+     * @phpstan-pure
+     */
+    public function __construct(string $id, string $slug, ?string $avatarUrl = null)
+    {
+        $this->id = $id;
+        $this->slug = $slug;
+        $this->avatarUrl = $avatarUrl;
+    }
+}

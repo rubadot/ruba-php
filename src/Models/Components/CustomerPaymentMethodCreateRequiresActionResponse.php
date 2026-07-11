@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class CustomerPaymentMethodCreateRequiresActionResponse
+{
+    /**
+     *
+     * @var string $clientSecret
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('client_secret')]
+    public string $clientSecret;
+
+    /**
+     *
+     * @var string $status
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('status')]
+    public string $status;
+
+    /**
+     * @param  string  $status
+     * @param  string  $clientSecret
+     * @phpstan-pure
+     */
+    public function __construct(string $clientSecret, string $status = 'requires_action')
+    {
+        $this->clientSecret = $clientSecret;
+        $this->status = $status;
+    }
+}

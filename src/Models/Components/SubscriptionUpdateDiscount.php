@@ -1,0 +1,26 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class SubscriptionUpdateDiscount
+{
+    /**
+     * Update the subscription to apply a new discount. If set to `null`, the discount will be removed. The change will be applied on the next billing cycle.
+     *
+     * @var ?string $discountId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('discount_id')]
+    public ?string $discountId;
+
+    /**
+     * @param  ?string  $discountId
+     * @phpstan-pure
+     */
+    public function __construct(?string $discountId = null)
+    {
+        $this->discountId = $discountId;
+    }
+}

@@ -1,0 +1,24 @@
+# PaymentsListQueryParamStatusFilter
+
+Filter by payment status.
+
+
+## Supported Types
+
+### `Components\PaymentStatus`
+
+```php
+/**
+* @var \Ruba\Models\Components\PaymentStatus
+*/
+Components\PaymentStatus $value = /* values here */
+```
+
+### `array`
+
+```php
+/**
+* @var array<\Ruba\Models\Components\PaymentStatus>
+*/
+array $value = /* values here */
+```

@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+enum BenefitType: string
+{
+    case Custom = 'custom';
+    case Discord = 'discord';
+    case GithubRepository = 'github_repository';
+    case Downloadables = 'downloadables';
+    case LicenseKeys = 'license_keys';
+    case MeterCredit = 'meter_credit';
+    case FeatureFlag = 'feature_flag';
+}

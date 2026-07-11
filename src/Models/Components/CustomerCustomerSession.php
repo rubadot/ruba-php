@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class CustomerCustomerSession
+{
+    /**
+     *
+     * @var \DateTime $expiresAt
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('expires_at')]
+    public \DateTime $expiresAt;
+
+    /**
+     *
+     * @var ?string $returnUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('return_url')]
+    public ?string $returnUrl;
+
+    /**
+     * @param  \DateTime  $expiresAt
+     * @param  ?string  $returnUrl
+     * @phpstan-pure
+     */
+    public function __construct(\DateTime $expiresAt, ?string $returnUrl = null)
+    {
+        $this->expiresAt = $expiresAt;
+        $this->returnUrl = $returnUrl;
+    }
+}

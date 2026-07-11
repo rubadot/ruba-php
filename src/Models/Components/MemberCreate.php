@@ -1,0 +1,69 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/** MemberCreate - Schema for creating a new member. */
+class MemberCreate
+{
+    /**
+     * The ID of the customer this member belongs to.
+     *
+     * @var string $customerId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('customer_id')]
+    public string $customerId;
+
+    /**
+     * The email address of the member.
+     *
+     * @var string $email
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
+    public string $email;
+
+    /**
+     *
+     * @var ?\Ruba\Models\Components\MemberRole $role
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('role')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\MemberRole|null')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?MemberRole $role = null;
+
+    /**
+     *
+     * @var ?string $name
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('name')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $name = null;
+
+    /**
+     * The ID of the member in your system. This must be unique within the customer.
+     *
+     * @var ?string $externalId
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('external_id')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?string $externalId = null;
+
+    /**
+     * @param  string  $customerId
+     * @param  string  $email
+     * @param  ?\Ruba\Models\Components\MemberRole  $role
+     * @param  ?string  $name
+     * @param  ?string  $externalId
+     * @phpstan-pure
+     */
+    public function __construct(string $customerId, string $email, ?MemberRole $role = null, ?string $name = null, ?string $externalId = null)
+    {
+        $this->customerId = $customerId;
+        $this->email = $email;
+        $this->role = $role;
+        $this->name = $name;
+        $this->externalId = $externalId;
+    }
+}

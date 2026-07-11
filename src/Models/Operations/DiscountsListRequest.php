@@ -1,0 +1,67 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Operations;
+
+use Ruba\Models\Components;
+use Ruba\Utils\SpeakeasyMetadata;
+class DiscountsListRequest
+{
+    /**
+     * Filter by organization ID.
+     *
+     * @var string|array<string>|null $organizationId
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=organization_id')]
+    public string|array|null $organizationId = null;
+
+    /**
+     * Filter by name.
+     *
+     * @var ?string $query
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=query')]
+    public ?string $query = null;
+
+    /**
+     * Sorting criterion. Several criteria can be used simultaneously and will be applied in order. Add a minus sign `-` before the criteria name to sort by descending order.
+     *
+     * @var ?array<\Ruba\Models\Components\DiscountSortProperty> $sorting
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=sorting')]
+    public ?array $sorting = null;
+
+    /**
+     * Page number, defaults to 1.
+     *
+     * @var ?int $page
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=page')]
+    public ?int $page = null;
+
+    /**
+     * Size of a page, defaults to 10. Maximum is 100.
+     *
+     * @var ?int $limit
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=limit')]
+    public ?int $limit = null;
+
+    /**
+     * @param  ?int  $page
+     * @param  ?int  $limit
+     * @param  string|array<string>|null  $organizationId
+     * @param  ?string  $query
+     * @param  ?array<\Ruba\Models\Components\DiscountSortProperty>  $sorting
+     * @phpstan-pure
+     */
+    public function __construct(string|array|null $organizationId = null, ?string $query = null, ?array $sorting = null, ?int $page = 1, ?int $limit = 10)
+    {
+        $this->organizationId = $organizationId;
+        $this->query = $query;
+        $this->sorting = $sorting;
+        $this->page = $page;
+        $this->limit = $limit;
+    }
+}

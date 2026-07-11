@@ -1,0 +1,54 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+/**
+ * WebhookSubscriptionUncanceledPayload - Sent when a customer revokes a pending cancellation.
+ *
+ *
+ * When a customer cancels with "at period end", they retain access until the
+ * subscription would renew. During this time, they can change their mind and
+ * undo the cancellation. This event is triggered when they do so.
+ *
+ * **Discord & Slack support:** Full
+ */
+class WebhookSubscriptionUncanceledPayload
+{
+    /**
+     *
+     * @var \DateTime $timestamp
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('timestamp')]
+    public \DateTime $timestamp;
+
+    /**
+     *
+     * @var \Ruba\Models\Components\Subscription $data
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('data')]
+    #[\Speakeasy\Serializer\Annotation\Type('\Ruba\Models\Components\Subscription')]
+    public Subscription $data;
+
+    /**
+     *
+     * @var string $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    public string $type;
+
+    /**
+     * @param  string  $type
+     * @param  \DateTime  $timestamp
+     * @param  \Ruba\Models\Components\Subscription  $data
+     * @phpstan-pure
+     */
+    public function __construct(\DateTime $timestamp, Subscription $data, string $type = 'subscription.uncanceled')
+    {
+        $this->timestamp = $timestamp;
+        $this->data = $data;
+        $this->type = $type;
+    }
+}

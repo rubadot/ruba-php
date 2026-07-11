@@ -1,0 +1,36 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Operations;
+
+use Ruba\Utils\SpeakeasyMetadata;
+class CustomerPortalCustomersListPaymentMethodsRequest
+{
+    /**
+     * Page number, defaults to 1.
+     *
+     * @var ?int $page
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=page')]
+    public ?int $page = null;
+
+    /**
+     * Size of a page, defaults to 10. Maximum is 100.
+     *
+     * @var ?int $limit
+     */
+    #[SpeakeasyMetadata('queryParam:style=form,explode=true,name=limit')]
+    public ?int $limit = null;
+
+    /**
+     * @param  ?int  $page
+     * @param  ?int  $limit
+     * @phpstan-pure
+     */
+    public function __construct(?int $page = 1, ?int $limit = 10)
+    {
+        $this->page = $page;
+        $this->limit = $limit;
+    }
+}

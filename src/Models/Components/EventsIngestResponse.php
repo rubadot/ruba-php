@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class EventsIngestResponse
+{
+    /**
+     * Number of events inserted.
+     *
+     * @var int $inserted
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('inserted')]
+    public int $inserted;
+
+    /**
+     * Number of duplicate events skipped.
+     *
+     * @var ?int $duplicates
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('duplicates')]
+    #[\Speakeasy\Serializer\Annotation\SkipWhenNull]
+    public ?int $duplicates = null;
+
+    /**
+     * @param  int  $inserted
+     * @param  ?int  $duplicates
+     * @phpstan-pure
+     */
+    public function __construct(int $inserted, ?int $duplicates = 0)
+    {
+        $this->inserted = $inserted;
+        $this->duplicates = $duplicates;
+    }
+}

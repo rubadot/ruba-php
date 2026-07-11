@@ -1,0 +1,34 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class OrganizationCompanyLegalEntitySchema
+{
+    /**
+     *
+     * @var string $registeredName
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('registered_name')]
+    public string $registeredName;
+
+    /**
+     *
+     * @var string $type
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('type')]
+    public string $type;
+
+    /**
+     * @param  string  $type
+     * @param  string  $registeredName
+     * @phpstan-pure
+     */
+    public function __construct(string $registeredName, string $type = 'company')
+    {
+        $this->registeredName = $registeredName;
+        $this->type = $type;
+    }
+}

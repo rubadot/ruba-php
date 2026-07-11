@@ -1,0 +1,54 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Errors;
+
+use Ruba\Utils;
+class NotPaidOrder
+{
+    /**
+     *
+     * @var string $error
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('error')]
+    public string $error;
+
+    /**
+     *
+     * @var string $detail
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('detail')]
+    public string $detail;
+
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     *
+     * @var ?\Psr\Http\Message\ResponseInterface $rawResponse
+     */
+    #[\Speakeasy\Serializer\Annotation\Exclude]
+
+    public ?\Psr\Http\Message\ResponseInterface $rawResponse = null;
+
+    /**
+     * @param  string  $error
+     * @param  string  $detail
+     * @param  ?\Psr\Http\Message\ResponseInterface  $rawResponse
+     * @phpstan-pure
+     */
+    public function __construct(string $detail, ?\Psr\Http\Message\ResponseInterface $rawResponse = null, string $error = 'NotPaidOrder')
+    {
+        $this->error = $error;
+        $this->detail = $detail;
+        $this->rawResponse = $rawResponse;
+    }
+
+    public function toException(): NotPaidOrderThrowable
+    {
+        $serializer = Utils\JSON::createSerializer();
+        $message = $serializer->serialize($this, 'json');
+        $code = -1;
+
+        return new NotPaidOrderThrowable($message, (int) $code, $this);
+    }
+}

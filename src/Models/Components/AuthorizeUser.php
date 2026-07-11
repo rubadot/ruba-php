@@ -1,0 +1,43 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Ruba\Models\Components;
+
+
+class AuthorizeUser
+{
+    /**
+     *
+     * @var string $id
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('id')]
+    public string $id;
+
+    /**
+     *
+     * @var string $email
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('email')]
+    public string $email;
+
+    /**
+     *
+     * @var ?string $avatarUrl
+     */
+    #[\Speakeasy\Serializer\Annotation\SerializedName('avatar_url')]
+    public ?string $avatarUrl;
+
+    /**
+     * @param  string  $id
+     * @param  string  $email
+     * @param  ?string  $avatarUrl
+     * @phpstan-pure
+     */
+    public function __construct(string $id, string $email, ?string $avatarUrl = null)
+    {
+        $this->id = $id;
+        $this->email = $email;
+        $this->avatarUrl = $avatarUrl;
+    }
+}
