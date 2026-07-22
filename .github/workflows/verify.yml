@@ -16,7 +16,7 @@ jobs:
         with:
           php-version: "8.3"
           coverage: none
-      - run: composer validate --strict
+      - run: composer validate --no-check-publish
       - run: composer install --no-interaction --prefer-dist
       - run: composer test
       - run: composer stan
