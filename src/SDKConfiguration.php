@@ -22,11 +22,11 @@ class SDKConfiguration
 
     public string $openapiDocVersion = '0.1.0';
 
-    public string $sdkVersion = '0.10.0';
+    public string $sdkVersion = '0.10.4';
 
     public string $genVersion = '2.879.6';
 
-    public string $userAgent = 'ruba-sdk/php 0.10.3 getruba/sdk';
+    public string $userAgent = 'ruba-sdk/php 0.10.4 getruba/sdk';
 
     public ?RetryConfig $retryConfig = null;
 
