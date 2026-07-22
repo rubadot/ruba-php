@@ -26,7 +26,7 @@ class SDKConfiguration
 
     public string $genVersion = '2.879.6';
 
-    public string $userAgent = 'ruba-sdk/php 0.10.1 getruba/sdk';
+    public string $userAgent = 'ruba-sdk/php 0.10.2 getruba/sdk';
 
     public ?RetryConfig $retryConfig = null;
 

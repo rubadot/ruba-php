@@ -1,6 +1,6 @@
 # Ruba PHP SDK
 
-Connect a PHP application to Ruba with typed models and clients for billing, checkout, customer management, subscriptions, orders, and webhooks.
+Use typed clients and models to connect PHP applications to Ruba payments, billing, customers, subscriptions, orders, and webhooks.
 
 ## Requirements
 

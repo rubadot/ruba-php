@@ -1,5 +1,6 @@
 {
   "name": "getruba/sdk",
+  "description": "Typed PHP client for Ruba payments, billing, customers, and webhooks.",
   "type": "library",
   "autoload": {
     "psr-4": {
